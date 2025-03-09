@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Hepsihikaye</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_categories">Kategoriler</string>
+    <string name="nav_videos">Videolar</string>
+    <string name="nav_settings">Ayarlar</string>
+    
+    <!-- Home page -->
+    <string name="featured_stories">Trend Hikayeler</string>
+    <string name="recent_stories">Son Eklenenler</string>
+    <string name="popular_stories">En Çok Beğenilenler</string>
+    
+    <!-- Post detail -->
+    <string name="like">Beğen</string>
+    <string name="dislike">Beğenme</string>
+    <string name="post_comments">Yorumlar</string>
+    <string name="post_by">Yazar: %1$s</string>
+    <string name="post_date">Tarih: %1$s</string>
+    
+    <!-- Categories -->
+    <string name="category_story">Öykü</string>
+    <string name="category_article">Makale</string>
+    <string name="category_poem">Şiir</string>
+    <string name="category_video">Video</string>
+    
+    <!-- Comments -->
+    <string name="add_comment">Yorum Ekle</string>
+    <string name="comment_hint">Yorumunuzu yazın…</string>
+    <string name="submit_comment">Gönder</string>
+    <string name="no_comments">Henüz yorum yok</string>
+    
+    <!-- Error messages -->
+    <string name="error_loading">Yüklenirken bir hata oluştu</string>
+    <string name="error_connection">İnternet bağlantınızı kontrol edin</string>
+    <string name="retry">Tekrar Dene</string>
+    
+    <!-- Other -->
+    <string name="read_more">Devamını Oku</string>
+    <string name="share">Paylaş</string>
+</resources> 
