@@ -5,32 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hepsihikaye.android.model.HomeResponse
+import com.hepsihikaye.android.repository.HomeRepository
 import com.hepsihikaye.android.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val repository: HomeRepository
+) : ViewModel() {
     
     private val _homeData = MutableLiveData<Resource<HomeResponse>>()
     val homeData: LiveData<Resource<HomeResponse>> = _homeData
+    
+    init {
+        loadHomeData()
+    }
     
     fun loadHomeData() {
         _homeData.value = Resource.Loading()
         
         viewModelScope.launch {
-            try {
-                // TODO: Implement API call
-                // For now, just show empty data
-                _homeData.value = Resource.Success(HomeResponse(
-                    featured_posts = emptyList(),
-                    recent_posts = emptyList(),
-                    most_liked_posts = emptyList()
-                ))
-            } catch (e: Exception) {
-                _homeData.value = Resource.Error(
-                    message = e.message ?: "An unexpected error occurred",
-                    data = null
-                )
-            }
+            val result = repository.getHomeData()
+            _homeData.value = result
         }
     }
 } 

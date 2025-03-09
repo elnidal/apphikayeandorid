@@ -2,10 +2,12 @@ package com.hepsihikaye.android
 
 import android.app.Application
 import android.util.Log
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Main application class that initializes everything on app start
  */
+@HiltAndroidApp
 class HepsihikayeApp : Application() {
     
     companion object {
