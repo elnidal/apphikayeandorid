@@ -5,37 +5,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <!-- Content Container -->
+            <!-- Content Layout -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/contentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <!-- Featured Stories Section -->
+                <!-- Featured Stories -->
                 <TextView
-                    android:id="@+id/featuredStoriesTitle"
-                    android:layout_width="match_parent"
+                    android:id="@+id/featuredTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/featured_stories"
-                    android:textSize="20sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Öne Çıkanlar"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvFeaturedStories"
@@ -44,21 +44,25 @@
                     android:layout_marginTop="8dp"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/featuredStoriesTitle"
-                    tools:listitem="@layout/item_featured_post"
-                    tools:itemCount="3" />
+                    app:layout_constraintTop_toBottomOf="@id/featuredTitle"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_featured_post" />
 
-                <!-- Recent Posts Section -->
+                <!-- Recent Posts -->
                 <TextView
-                    android:id="@+id/recentPostsTitle"
-                    android:layout_width="match_parent"
+                    android:id="@+id/recentTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="@string/recent_stories"
-                    android:textSize="20sp"
+                    android:text="Son Eklenenler"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rvFeaturedStories" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -66,22 +70,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/recentPostsTitle"
-                    tools:listitem="@layout/item_post"
-                    tools:itemCount="4" />
+                    app:layout_constraintTop_toBottomOf="@id/recentTitle"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_post" />
 
-                <!-- Popular Posts Section -->
+                <!-- Popular Posts -->
                 <TextView
-                    android:id="@+id/popularPostsTitle"
-                    android:layout_width="match_parent"
+                    android:id="@+id/popularTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="@string/popular_stories"
-                    android:textSize="20sp"
+                    android:text="En Çok Beğenilenler"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rvRecentPosts" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -89,11 +96,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/popularPostsTitle"
-                    tools:listitem="@layout/item_post"
-                    tools:itemCount="4" />
+                    app:layout_constraintTop_toBottomOf="@id/popularTitle"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_post" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,32 +110,21 @@
                 android:id="@+id/errorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:padding="32dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_error"
-                    android:contentDescription="@string/error_loading" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/errorMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/error_loading"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/btnRetry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/retry" />
+                    android:gravity="center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    tools:text="An error occurred" />
 
             </LinearLayout>
 
@@ -136,10 +133,13 @@
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="32dp" />
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
