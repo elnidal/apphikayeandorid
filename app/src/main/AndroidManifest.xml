@@ -26,17 +26,8 @@
             </intent-filter>
         </activity>
         
-        <activity
-            android:name=".ui.post.PostDetailActivity"
-            android:theme="@style/Theme.Hepsihikaye.NoActionBar" />
-            
-        <activity
-            android:name=".ui.category.CategoryActivity"
-            android:theme="@style/Theme.Hepsihikaye.NoActionBar" />
-            
-        <activity
-            android:name=".ui.video.VideoPlayerActivity"
-            android:theme="@style/Theme.Hepsihikaye.NoActionBar" />
+        <!-- Other activities will be added when implemented -->
+        
     </application>
 
 </manifest> 
